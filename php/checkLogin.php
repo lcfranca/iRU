@@ -1,8 +1,8 @@
 <?php
 require 'connectDB.php';
-myConnect = new Connect();
-myConnect->connect();
-$conn = myConnect->conn;
+$myConnect = new Connect();
+$myConnect->connect();
+$conn = $myConnect->conn;
 
 
 class CheckLogin(){
