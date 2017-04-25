@@ -6,7 +6,9 @@ class Register {
 		$myConnect = new ConnectDB();
 		$myConnect->Connect();
 		$conn = $myConnect->conn;
-		$sql = "INSERT INTO Users (Username, Matricula, Email, Password) VALUES ('$username', '$matricula', '$email', '$password')";
+		$criptografia = hash('sha256',$password);
+		//$criptografiaprabotapafuder = hash('sha256',$criptografia); Se quiser usar essa outra função,seria a criptografia da criptografia.
+		$sql = "INSERT INTO Users (Username, Matricula, Email, Password) VALUES ('$username', '$matricula', '$email', '$criptografia')";
 		if(mysqli_query($conn, $sql)){
 			echo "Records inserted successfully.";
 		} else{
@@ -14,3 +16,4 @@ class Register {
 		}
 	}
 }
+?>

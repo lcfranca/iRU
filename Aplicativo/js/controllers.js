@@ -37,9 +37,9 @@ function ($scope, $stateParams) {
         }
         else
           {
-            if (userName.value.length < 10)
+            if (userName.value.length < 7)
             {
-              alert('Escreva seu nome completo')
+              alert('Nome de usuário deve conter no mínimo 7 caracteres');
             }
             else rusername = document.getElementById("userName").value;
           }
@@ -119,10 +119,10 @@ function ($scope, $stateParams) {
     }
 }])
 
-.controller('loginCtrl', ['$scope', '$http', '$stateParams',function ($scope,$http){ // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope','$http','$stateParams','$state',function ($scope,$http,$stateParams,$state){ // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-  $scope.entrar = function ()
+  $scope.entrar = function()
   {
     var ematricula = document.getElementById('matricula').value;
     var epassword = document.getElementById('password').value;
@@ -131,10 +131,8 @@ function ($scope, $stateParams) {
       $http.post("Login.php", parameter).
         success(function(data,status,headers,config)
         {
-          if(data == true){
-            alert()
-          }
-
+          alert("Teste");
+          $state.go("menu");
         }).
         error(function(data,status,headers,config)
         {
@@ -142,6 +140,7 @@ function ($scope, $stateParams) {
         });
   }
 }])
+
 
 .controller('inicioCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
