@@ -14,28 +14,90 @@ function ($scope, $stateParams) {
 //function ($scope,$http, $stateParams)
   $scope.enviacadastro = function ()
   {
-    var rusername = document.getElementById("userName").value;
-    var rmatricula = document.getElementById("matrIcula").value;
-    var remail = document.getElementById("Email").value;
-    var rpassword = document.getElementById("passWord").value;
-    var newUser = [rusername,rmatricula,remail,rpassword];
+    var rusername;
+    var rmatricula;
+    var remail;
+    var rpassword;
     var filtro_name =  /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ' ]+$/;
+    var filtro_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    var filtro_matricula = /^[0-9 /]+$/;
+
+    /*$scope.validanome = function ()
+    {*/
+      if(userName.value == "")
+      {
+        alert('Favor preencher o nome de usuario');
+        return;
+      }
+      else
+        if(!filtro_name.test(userName.value))
+        {
+          alert('Nome de usuário pode conter apenas letras');
+          return;
+        }
+        else
+          {
+            if (userName.value.length < 10)
+            {
+              alert('Escreva seu nome completo')
+            }
+            else rusername = document.getElementById("userName").value;
+          }
+    //}
+      if(matrIcula.value == "")
+      {
+        alert('Favor preencer sua matrícula');
+        return;
+      }
+      else
+      {
+        if(!filtro_matricula.test(matrIcula.value))
+        {
+          alert('Preencha a matrícula apenas com números')
+          return;
+        }
+        else
+        {
+          if(matrIcula.value.length < 9)
+          {
+            alert('Escreva a matrícula por completo')
+            return;
+          }
+          else rmatricula = document.getElementById("matrIcula").value;
+        }
+      }
+
+      if(Email.value == "")
+      {
+        alert('Digite um email')
+        return;
+      }
+      else
+      {
+        if(!filtro_email.test(Email.value))
+        {
+          alert ('O email não está no formato correto')
+          return;
+        }
+        else remail = document.getElementById("Email").value;
+      }
+
+      if(passWord.value == "")
+      {
+        alert('Digite uma senha de pelo menos 6 dígitos')
+        return;
+      }
+        if(passWord.value.length < 6)
+        {
+          alert('Senha muito curta')
+          return;
+        }
+        else rpassword = document.getElementById("passWord").value;
+
+    var newUser = [rusername,rmatricula,remail,rpassword];
     console.log(newUser);
-    /*if(userName.value == "")
-    {
-      alert('Favor preencher o nome de usuario');
-      return;
-    }
-    else(!filtro_name.test(userName.value))
-    {
-      alert('Nome de usuário pode conter apenas letras');
-      return;
-    }
-    else if(matrIcula == "")
-    {
-      alert('Favor preencer sua matrícula');
-      return;
-    */
+
+
     var parameter = JSON.stringify({type:'newUser', username:rusername, matricula:rmatricula, email:remail, password:rpassword});
       $http.post("server.php", parameter).
         success(function(data,status,headers,config)
