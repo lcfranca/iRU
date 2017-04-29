@@ -1,20 +1,21 @@
 <ion-view title="Login" id="page9" style="background-color: rgb(51, 123, 25);">
   <ion-content padding="true" class="has-header">
-    <form id="login-form2" class="list">
+    <form name = "login-form" id="login-form2" class="list">
       <ion-list id="login-list2">
         <div class="spacer" style="height: 80px;"></div>
         <label class="item item-input">
           <span class="input-label">Matrícula:</span>
-          <input placeholder="" type="text" id="matricula">
+          <input name = "matricula2" placeholder="" type="text" onkeyup="maskMatriculaLogin(this);" maxlength="10" id="matricula">
         </label>
         <label class="item item-input">
           <span class="input-label">Senha:</span>
           <input placeholder="" type="password" id="password">
         </label>
       </ion-list>
-      <div class="spacer" style="height: 40px;"></div>
-      <a id="login-button5" class="button button-stable  button-block"ng-click="entrar()">Entrar</a>
-      <a ui-sref="signup" id="login-button6" class="button button-stable  button-block button-dark">Criar conta</a>
+      <div class="spacer" style="height: 5px;"></div>
+      <a id="login-button5" class="button button-positive  button-block"ng-click="entrar()">Entrar</a>
+      <div class="spacer" style="height: 30px;"></div>
+      <a ui-sref="signup" id="login-button6" class="button button-stable  button-block">Criar conta</a>
       <a ui-sref="inicio" id="login-button7" class="button button-stable button-block">Esqueci minha senha</a>
     </form>
   </ion-content>
