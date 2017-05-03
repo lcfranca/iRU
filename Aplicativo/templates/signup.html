@@ -7,18 +7,22 @@
           <span class="input-label">Usuário</span>
           <input placeholder="Digite nome completo" type="text" id="userName">
         </label>
+         <span class='msg-erro msg-name'></span> 
         <label class="item item-input">
           <span class="input-label">Matricula</span>
           <input name = "matricula1" placeholder="42/4242424" type="text" onkeyup="maskMatricula(this);" maxlength="10" id="matrIcula">
         </label>
+          <span class='msg-erro msg-matricula'></span>
         <label class="item item-input">
           <span class="input-label">Email</span>
           <input placeholder="exemplo@exemplo.com" type="text" id="Email">
         </label>
+          <span class='msg-erro msg-email'></span>
         <label class="item item-input">
           <span class="input-label">Password</span>
           <input placeholder="Mínimo 6 dígitos" type="password" id="passWord">
         </label>
+          <span class='msg-erro msg-password'></span>
         <div class="spacer" style="height: 50px;"></div>
       </ion-list>
       <b ui-sref="signup" id="signup-button10" class="button button-stable button-block" ng-click='enviacadastro()'>Cadastrar!</b>

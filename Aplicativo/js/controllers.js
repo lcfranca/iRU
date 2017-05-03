@@ -24,72 +24,100 @@ function ($scope, $stateParams) {
 
     /*$scope.validanome = function ()
     {*/
+      caixa_name = document.querySelector('.msg-name');
+      caixa_name.style.display = 'none';
       if(userName.value == "")
       {
-        alert('Favor preencher o nome de usuario');
+        caixa_name.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Favor preencher o nome de usuário</div>";
+        caixa_name.style.display = 'block';
+        //alert('Favor preencher o nome de usuario');
         return;
       }
       else
         if(!filtro_name.test(userName.value))
         {
-          alert('Nome de usuário pode conter apenas letras');
+          caixa_name.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Nome de usuário pode conter apenas letras</div>";
+          caixa_name.style.display = 'block';
+          //alert('Nome de usuário pode conter apenas letras');
           return;
         }
         else
           {
             if (userName.value.length < 7)
             {
-              alert('Nome de usuário deve conter no mínimo 7 caracteres');
+              caixa_name.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Nome de usuário deve conter no mínimo 7 caracteres</div>";
+              caixa_name.style.display = 'block';
+              //alert('Nome de usuário deve conter no mínimo 7 caracteres');
             }
             else rusername = document.getElementById("userName").value;
           }
     //}
+      caixa_matricula = document.querySelector('.msg-matricula');
+      caixa_matricula.style.display = 'none'; 
       if(matrIcula.value == "")
       {
-        alert('Favor preencer sua matrícula');
+        caixa_matricula.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Favor preencher sua matrícula</div>";
+        caixa_matricula.style.display = 'block';
+        //alert('Favor preencer sua matrícula');
         return;
       }
       else
       {
         if(!filtro_matricula.test(matrIcula.value))
         {
-          alert('Preencha a matrícula apenas com números')
+          caixa_matricula.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Preencha a matrícula apenas com números</div>";
+          caixa_matricula.style.display = 'block';
+          //alert('Preencha a matrícula apenas com números')
           return;
         }
         else
         {
           if(matrIcula.value.length < 9)
           {
-            alert('Escreva a matrícula por completo')
+            caixa_matricula.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Preencha a matrícula por completo</div>";
+            caixa_matricula.style.display = 'block';
+            //alert('Escreva a matrícula por completo')
             return;
           }
           else rmatricula = document.getElementById("matrIcula").value;
         }
       }
 
+      caixa_email = document.querySelector('.msg-email');
+      caixa_email.style.display = 'none'; 
       if(Email.value == "")
       {
-        alert('Digite um email')
+        caixa_email.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Digite um email</div>";
+        caixa_email.style.display = 'block';
+        //alert('Digite um email')
         return;
       }
       else
       {
         if(!filtro_email.test(Email.value))
         {
-          alert ('O email não está no formato correto')
+          caixa_email.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>O email não está no formato correto</div>";
+          caixa_email.style.display = 'block';
+          //alert ('O email não está no formato correto')
           return;
         }
         else remail = document.getElementById("Email").value;
       }
 
+      caixa_password = document.querySelector('.msg-password');
+      caixa_password.style.display = 'none'; 
       if(passWord.value == "")
       {
-        alert('Digite uma senha de pelo menos 6 dígitos')
+        caixa_password.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Digite uma senha de pelo menos 6 dígitos</div>";
+        caixa_password.style.display = 'block';
+        //alert('Digite uma senha de pelo menos 6 dígitos')
         return;
       }
         if(passWord.value.length < 6)
         {
-          alert('Senha muito curta')
+          caixa_password.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Senha muito curta</div>";
+          caixa_password.style.display = 'block';
+          //alert('Senha muito curta')
           return;
         }
         else rpassword = document.getElementById("passWord").value;
