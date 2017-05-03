@@ -163,7 +163,6 @@ function ($scope, $stateParams) {
       $http.post("Login.php", parameter).
         success(function(data,status,headers,config)
         {
-
           alert(data);
           if(data == true)
           {
@@ -176,6 +175,8 @@ function ($scope, $stateParams) {
               alert("Matrícula ou senha inválidas");
             }
           }
+          alert("Teste");
+          $state.go("menu");
         }).
         error(function(data,status,headers,config)
         {
