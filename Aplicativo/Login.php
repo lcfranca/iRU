@@ -2,8 +2,18 @@
 include ('checkLogin.php');
  $meuobjeto = json_decode(file_get_contents('php://input'));
 
-  $login = new checkLogin();
-  $result = $login->Check($meuobjeto->matricula, $meuobjeto->password);
+  $login = new CheckLogin();
+  $criptografia = hash('sha256',$meuobjeto->password);
+//  $login->Check($meuobjeto->matricula, $criptografia);
+  if($login->Check($meuobjeto->matricula, $criptografia) == true)
+  {
+    echo true;
+  }
+  else
+  {
+    echo false;
+  }
+  //$result = $login->Check($meuobjeto->matricula, $meuobjeto->password);
 
-  echo json_encode($result);
+  //echo json_encode($result);
 ?>

@@ -37,9 +37,10 @@ function ($scope, $stateParams) {
         }
         else
           {
-            if (userName.value.length < 10)
+            if (userName.value.length < 7)
             {
-              alert('Escreva seu nome completo')
+              alert('Nome de usuário deve conter no mínimo 7 caracteres');
+              return;
             }
             else rusername = document.getElementById("userName").value;
           }
@@ -58,9 +59,9 @@ function ($scope, $stateParams) {
         }
         else
         {
-          if(matrIcula.value.length < 9)
+          if(matrIcula.value.length != 10)
           {
-            alert('Escreva a matrícula por completo')
+            alert('Matricula inválida. Matricula deve possuir 9 caracteres')
             return;
           }
           else rmatricula = document.getElementById("matrIcula").value;
@@ -95,9 +96,6 @@ function ($scope, $stateParams) {
         else rpassword = document.getElementById("passWord").value;
 
     var newUser = [rusername,rmatricula,remail,rpassword];
-    console.log(newUser);
-
-
     var parameter = JSON.stringify({type:'newUser', username:rusername, matricula:rmatricula, email:remail, password:rpassword});
       $http.post("server.php", parameter).
         success(function(data,status,headers,config)
@@ -107,34 +105,77 @@ function ($scope, $stateParams) {
         error(function(data,status,headers,config)
         {
           console.log("Error");
-        });
+        })
         if(success=true)
         {
-          //alert('Bem vindo');
+          alert('Bem vindo');
         }
         else
         {
-          alert('Error teste')
+          alert('Error')
         }
     }
 }])
 
-.controller('loginCtrl', ['$scope', '$http', '$stateParams',function ($scope,$http){ // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope','$http','$stateParams','$state',function ($scope,$http,$stateParams,$state){ // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-  $scope.entrar = function ()
+  $scope.entrar = function()
   {
+    var filtro_matricula = /^[0-9 /]+$/;
     var ematricula = document.getElementById('matricula').value;
     var epassword = document.getElementById('password').value;
+    if(matricula.value == "")
+    {
+      alert('Favor preencer sua matrícula');
+      return;
+    }
+    else
+      {
+      if(!filtro_matricula.test(matricula.value))
+        {
+        alert('Preencha a matrícula apenas com números')
+        return;
+        }
+      else
+        {
+        if(matricula.value.length != 10)
+        {
+          alert('Matricula inválida. Matricula deve possuir 9 caracteres')
+          return;
+        }
+        else rmatricula = document.getElementById("matricula").value;
+        }
+      }
+      if(password.value == "")
+      {
+        alert('Digite uma senha de pelo menos 6 dígitos')
+        return;
+      }
+        if(password.value.length < 6)
+        {
+          alert('Senha muito curta')
+          return;
+        }
+        else rpassword = document.getElementById("password").value;
     var Users = [matricula,password];
     var parameter = JSON.stringify({type:'Users',matricula:ematricula,password:epassword});
       $http.post("Login.php", parameter).
         success(function(data,status,headers,config)
         {
-          if(data == true){
-            alert()
-          }
 
+          alert(data);
+          if(data == true)
+          {
+            $state.go("menu");
+          }
+          else
+          {
+            if(data == false)
+            {
+              alert("Matrícula ou senha inválidas");
+            }
+          }
         }).
         error(function(data,status,headers,config)
         {
@@ -142,6 +183,7 @@ function ($scope, $stateParams) {
         });
   }
 }])
+
 
 .controller('inicioCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function

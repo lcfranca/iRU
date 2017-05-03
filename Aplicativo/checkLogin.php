@@ -1,5 +1,6 @@
 <?php
 include ('connectDB.php');
+//include ('route.js');
 
 class CheckLogin
 {
@@ -12,7 +13,7 @@ class CheckLogin
       $sql = "SELECT ID FROM Users WHERE Matricula = '$matricula' and Password = '$senha'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      //$active = $row["active"];
 
       $count = mysqli_num_rows($result);
 
@@ -23,11 +24,14 @@ class CheckLogin
  //        $_SESSION['login_user'] = $matricula;
 
    //      header("location: localhost/Testinhos/dump.html");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-         echo $error;
       }
+      else
+      {
+  //       $error = "Your Login Name or Password is invalid";
+         return false;
+      }
+  //    return false;
    }
    }
-
 }
+?>

@@ -5,6 +5,25 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <script language = "javascript" type="text/javascript">
+    function maskMatricula (campoMatricula){
+      var mat = campoMatricula.value;
+      if(mat.length == 2){
+        mat = mat + "/";
+        document.forms["contact-form"]["matricula1"].value = mat;
+        return true;
+      }
+    }
+
+    function maskMatriculaLogin (campoMatricula){
+      var mat = campoMatricula.value;
+      if(mat.length == 2){
+        mat = mat + "/";
+        document.forms["login-form"]["matricula2"].value = mat;
+        return true;
+      }
+    }
+    </script>
 
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
