@@ -1,11 +1,9 @@
 <?php
-  //echo 'Teste';
+    //echo 'Teste';
   include("Register.php");
   //include("ReceiveJSON.php");
   //$myReceive = new JSON_receive();
-
   $meuobjeto = json_decode(file_get_contents('php://input'));
-
   $myRegister = new Register();
   $myRegister->Registrar($meuobjeto->username, $meuobjeto->matricula, $meuobjeto->email, $meuobjeto->password);
   /*  $username = mysqli_escape_string($conn, $meuobjeto->username);

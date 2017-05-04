@@ -45,14 +45,10 @@ function ($scope, $stateParams) {
           {
             if (userName.value.length < 7)
             {
-<<<<<<< HEAD
               caixa_name.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Nome de usuário deve conter no mínimo 7 caracteres</div>";
               caixa_name.style.display = 'block';
-              //alert('Nome de usuário deve conter no mínimo 7 caracteres');
-=======
-              alert('Nome de usuário deve conter no mínimo 7 caracteres');
+              //alert('Nome de usuário deve conter no mínimo 7 caracteres');           
               return;
->>>>>>> f5a7c0d0b5e4f491f5c8d0e02a4ad96f28117ff7
             }
             else rusername = document.getElementById("userName").value;
           }
@@ -79,13 +75,9 @@ function ($scope, $stateParams) {
         {
           if(matrIcula.value.length != 10)
           {
-<<<<<<< HEAD
-            caixa_matricula.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Preencha a matrícula por completo</div>";
+            caixa_matricula.innerHTML = "<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>Matricula inválida. Matricula deve possuir 9 caracteres</div>";
             caixa_matricula.style.display = 'block';
             //alert('Escreva a matrícula por completo')
-=======
-            alert('Matricula inválida. Matricula deve possuir 9 caracteres')
->>>>>>> f5a7c0d0b5e4f491f5c8d0e02a4ad96f28117ff7
             return;
           }
           else rmatricula = document.getElementById("matrIcula").value;
@@ -194,12 +186,11 @@ function ($scope, $stateParams) {
           return;
         }
         else rpassword = document.getElementById("password").value;
-    var Users = [matricula,password];
-    var parameter = JSON.stringify({type:'Users',matricula:ematricula,password:epassword});
-      $http.post("Login.php", parameter).
+        var Users = [matricula,password];
+        var parameter = JSON.stringify({type:'Users',matricula:ematricula,password:epassword});
+        $http.post("Login.php", parameter).
         success(function(data,status,headers,config)
         {
-          alert(data);
           if(data == true)
           {
             $state.go("menu");
@@ -211,8 +202,6 @@ function ($scope, $stateParams) {
               alert("Matrícula ou senha inválidas");
             }
           }
-          alert("Teste");
-          $state.go("menu");
         }).
         error(function(data,status,headers,config)
         {
