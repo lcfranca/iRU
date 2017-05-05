@@ -1,8 +1,8 @@
 <?php
-include ('checkLogin.php');
+include ('DbController.php');
  $meuobjeto = json_decode(file_get_contents('php://input'));
 
-  $login = new CheckLogin();
+  $login = new Controller();
   $criptografia = hash('sha256',$meuobjeto->password);
 //  $login->Check($meuobjeto->matricula, $criptografia);
   if($login->Check($meuobjeto->matricula, $criptografia) == true)
