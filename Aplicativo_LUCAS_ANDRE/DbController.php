@@ -57,7 +57,15 @@ Class Controller {
     $sql = "SELECT * FROM Compras WHERE Matricula = '$matricula'";
     if($result = mysqli_query($conn,$sql)) {
 
-      /* criar objeto que tem 2 arrays (tempo e valor da compra (sera que rola um mapa?) e mandar via json encode) */
+      /* criar objeto que tem 2 arrays (tempo e valor da compra (sera que rola um mapa?) e mandar via json encode) 
+$a = array(1, 2, 3, 4, 5);
+$b = array("one", "two", "three", "four", "five");
+$c = array("uno", "dos", "tres", "cuatro", "cinco");
+
+$d = array_map(null, $a, $b, $c);
+print_r($d);
+
+      */
           //tem como passar tudo no encode ou tem que fazer assim?
           while($row = mysqli_fetch_assoc($result)){
            // $buyinfo->date[0] = $
