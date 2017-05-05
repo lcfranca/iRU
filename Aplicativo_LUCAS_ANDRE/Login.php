@@ -5,7 +5,7 @@ include ('DbController.php');
   $login = new Controller();
   $criptografia = hash('sha256',$meuobjeto->password);
 //  $login->Check($meuobjeto->matricula, $criptografia);
-  if($login->Check($meuobjeto->matricula, $criptografia) == true)
+  if($login->check($meuobjeto->matricula, $criptografia) == true)
   {
     echo true;
   }
