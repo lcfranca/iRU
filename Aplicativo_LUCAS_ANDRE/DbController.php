@@ -30,7 +30,7 @@ Class Controller {
 		$conn = $myConnect->conn;
 		$criptografia = hash('sha256',$password);
 		//$criptografiaprabotapafuder = hash('sha256',$criptografia); Se quiser usar essa outra função,seria a criptografia da criptografia.
-		$sql = "INSERT INTO Users (Username, Matricula, Email, Password, CPF, Gender, Age, Curso, Saldo) VALUES ('$username', '$matricula', '$email', '$criptografia', '$CPF', '$gender', '$age', '$curso', '0')";
+		$sql = "INSERT INTO Users (Username, Matricula, Email, Password, CPF, Gender, Age, Curso) VALUES ('$username', '$matricula', '$email', '$criptografia', '$CPF', '$gender', '$age', '$curso')";
 		if(mysqli_query($conn, $sql)){
 			echo "Records inserted successfully.";
 		} else{
@@ -54,26 +54,40 @@ Class Controller {
     $myConnect = new ConnectDB();
     $myConnect->Connect();
     $conn = $myConnect->conn;
-    $sql = "SELECT * FROM Compras WHERE Matricula = '$matricula'";
+    $sql = "SELECT Data, Valor FROM Compras WHERE Matricula = '$matricula'";
     if($result = mysqli_query($conn,$sql)) {
-
-      /* criar objeto que tem 2 arrays (tempo e valor da compra (sera que rola um mapa?) e mandar via json encode) 
-$a = array(1, 2, 3, 4, 5);
-$b = array("one", "two", "three", "four", "five");
-$c = array("uno", "dos", "tres", "cuatro", "cinco");
-
-$d = array_map(null, $a, $b, $c);
-print_r($d);
-
-      */
-          //tem como passar tudo no encode ou tem que fazer assim?
-          while($row = mysqli_fetch_assoc($result)){
-           // $buyinfo->date[0] = $
+        $data = array();
+        $valor = array();
+          while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            array_push($data, $row["Data"]);
+            array_push($valor, $row["Valor"]);
           }
+        $send = array($data, $valor);
+        echo json_encode($send);
       }
       else {
          echo false;
       }
+  }
+  function checkTransactionMonth(){
+    $myConnect = new ConnectDB();
+    $myConnect->Connect();
+    $conn = $myConnect->conn;
+    $data = 
+    $sql = "SELECT BUY_ID, Data, Valor FROM Compras WHERE Data = '$data'";
+    
+  }
+  function checkTransactionWeek(){
+    $myConnect = new ConnectDB();
+    $myConnect->Connect();
+    $conn = $myConnect->conn;
+    $sql = "SELECT Data, Valor FROM Compras WHERE Matricula = '$matricula'";
+  }
+  function checkTransactionDay(){
+    $myConnect = new ConnectDB();
+    $myConnect->Connect();
+    $conn = $myConnect->conn;
+    $sql = "SELECT Data, Valor FROM Compras WHERE Matricula = '$matricula'";
   }
 
 
