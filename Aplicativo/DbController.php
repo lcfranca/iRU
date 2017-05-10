@@ -59,11 +59,10 @@ Class Controller {
         $data = array();
         $valor = array();
           while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            array_push($data, $row["Data"]);
-            array_push($valor, $row["Valor"]);
+						$data[$row["Data"]] = $row["Valor"];
           }
-        $send = array($data, $valor);
-        echo json_encode($send);
+        //$send = array($data, $valor);
+        echo json_encode($data);
       }
       else {
          echo false;
@@ -73,9 +72,9 @@ Class Controller {
     $myConnect = new ConnectDB();
     $myConnect->Connect();
     $conn = $myConnect->conn;
-    $data = 
+    //$data =
     $sql = "SELECT BUY_ID, Data, Valor FROM Compras WHERE Data = '$data'";
-    
+
   }
   function checkTransactionWeek(){
     $myConnect = new ConnectDB();

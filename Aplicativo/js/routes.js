@@ -7,41 +7,47 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
 
-      .state('tabsController', {
+
+
+    .state('tabsController', {
     url: '/page1',
     templateUrl: 'templates/tabsController.html',
     abstract:true
   })
 
-  .state('signup', {
+    .state('signup', {
     url: '/page3',
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl'
   })
 
-  .state('login', {
+    .state('login', {
     url: '/page2',
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
 
-  .state('inicio', {
+    .state('inicio', {
     url: '/page1',
     templateUrl: 'templates/inicio.html',
     controller: 'inicioCtrl'
   })
 
-  .state('menu', {
+    .state('menu', {
     url: '/page4',
     templateUrl: 'templates/menu.html',
     controller: 'menuCtrl'
   })
 
+  .state('menuadm', {
+    url: '/page5',
+    templateUrl: 'templates/menuadm.html',
+    controller: 'menuadmCtrl'
+  })
+
 $urlRouterProvider.otherwise('/page1')
 
-  
+
 
 });
