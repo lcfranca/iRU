@@ -19,8 +19,11 @@ function ($scope, $stateParams) {
     var remail;
     var rpassword;
     var rpassword2;
-    var numeros,digitos,soma,i,resultado,digitos_iguais;
-    digitos_iguais = 1;
+    //var numeros,digitos,soma,i,resultado,digitos_iguais;
+    //digitos_iguais = 1;
+    //var soma,
+    //var resto,
+    //soma = 0;
     var rcpf;
     var rage;
     var rcurso;
@@ -134,6 +137,7 @@ function ($scope, $stateParams) {
           alert("CPF inválido");
           return;
         }
+
         /*for (i = 0; i < cpf.length - 1; i++)
           if (cpf.charAt(i) != cpf.charAt(i + 1))
                   {
@@ -164,7 +168,7 @@ function ($scope, $stateParams) {
     else
         alert ("1");
         return*/
-        rcpf = document.getElementById("cpf").value;
+        //rcpf = document.getElementById("cpf").value;
         rage = document.getElementById("age").value;
         rgender = document.getElementById("gender").value;
         rcurso = document.getElementById("curso").value;
