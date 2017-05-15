@@ -72,7 +72,6 @@ Class Controller {
     $myConnect = new ConnectDB();
     $myConnect->Connect();
     $conn = $myConnect->conn;
-    //$data =
     $sql = "SELECT BUY_ID, Data, Valor FROM Compras WHERE Data = '$data'";
 
   }

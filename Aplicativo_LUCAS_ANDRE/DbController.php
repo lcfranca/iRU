@@ -69,25 +69,41 @@ Class Controller {
          echo false;
       }
   }
-  function checkTransactionMonth(){
+  function checkTransactionHistory(){
     $myConnect = new ConnectDB();
     $myConnect->Connect();
     $conn = $myConnect->conn;
-    $data = 
-    $sql = "SELECT BUY_ID, Data, Valor FROM Compras WHERE Data = '$data'";
-    
+    $sql = "SELECT ID, Data, Valor, Matricula, Horario FROM Compras";
+    if($result = mysqli_query($conn, $sql)) {
+      $dados = array();
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        array_push($dados, $row["ID"]);
+        array_push($dados, $row["Data"]);
+        array_push($dados, $row["Valor"]);
+        array_push($dados, $row["Matricula"]);
+      }
+    echo json_encode($dados);
+    }
+    else {
+      echo false;
+    }
   }
-  function checkTransactionWeek(){
+  function getNumberOfPeople(){
     $myConnect = new ConnectDB();
     $myConnect->Connect();
     $conn = $myConnect->conn;
-    $sql = "SELECT Data, Valor FROM Compras WHERE Matricula = '$matricula'";
-  }
-  function checkTransactionDay(){
-    $myConnect = new ConnectDB();
-    $myConnect->Connect();
-    $conn = $myConnect->conn;
-    $sql = "SELECT Data, Valor FROM Compras WHERE Matricula = '$matricula'";
+    $data = date("d/m/Y");
+    $sql = "SELECT Horario FROM Compras WHERE Data = '$data'";
+    if($result = mysqli_query($conn, $sql)) {
+      $horarios = array();
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        array_push($horarios, $row["Horario"]);
+      }
+    echo json_encode($dados);
+    }
+    else {
+      echo false;
+    }
   }
 
 
