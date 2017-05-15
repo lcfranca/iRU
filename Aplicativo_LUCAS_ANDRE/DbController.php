@@ -1,5 +1,6 @@
 <?php
 include ('connectDB.php');
+include ('OperationController.php');
 Class Controller {
 	function check($matricula, $senha){
      $myConnect = new ConnectDB();
@@ -93,14 +94,16 @@ Class Controller {
     $myConnect->Connect();
     $conn = $myConnect->conn;
     $data = date("d/m/Y");
+    //horario : date(h:i:sa);
     $sql = "SELECT Horario FROM Compras WHERE Data = '$data'";
     if($result = mysqli_query($conn, $sql)) {
       $horarios = array();
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         array_push($horarios, $row["Horario"]);
       }
-      
-    echo json_encode($dados);
+    myOperation = new Operations();
+    $pessoas = myOperation->estimatePeople();
+    echo $pessoas;
     }
     else {
       echo false;

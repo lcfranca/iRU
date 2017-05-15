@@ -1,14 +1,17 @@
 <?php
 class Operations {
-	function EstimatePeople($myArray){
-		$count = 0;
-		$d=strtotime("-15 Minutes");
+	function estimatePeople($myArray){
+		$pessoasNoRu = 0;
 		foreach ($myArray as $value) {
+			$horaTrasacao = strtotime($value);
+			$horaAtual = strtotime(date("h:i:sa"));
+			$minutos = round(abs($horaAtual - $horaTrasacao)/60, 2);
 			 //fazer a condição certa
 			//tempo da atual - tempo da compra < 15 min =>> count++
-			if(date("Y-m-d h:i:sa", $d) - $value <= 15) {
-				$count++;
+			if($minutos <= 15) {
+				$pessoasNoRu++;
 			}
 		}
+		return $pessoasNoRu;
 	}
 }
