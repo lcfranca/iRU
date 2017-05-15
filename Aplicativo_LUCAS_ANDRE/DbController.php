@@ -99,6 +99,7 @@ Class Controller {
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         array_push($horarios, $row["Horario"]);
       }
+      
     echo json_encode($dados);
     }
     else {
