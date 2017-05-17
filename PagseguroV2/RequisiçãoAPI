@@ -1,0 +1,13 @@
+<?
+
+@header(‘Content-Type: text/html; charset=utf-8’);
+
+$xml = simplexml_load_file("https://ws.pagseguro.uol.com.br/v2/transactions/notifications" 
+	"/766B9C-AD4B044B04DA-77742F5FA653-E1AB24" 
+	"?email=suporte@lojamodelo.com.br" 
+	"&token=95112EE828D94278BD394E91C4388F20") or die("Error: Cannot create object");
+
+print_r($xml)
+
+}
+?>
