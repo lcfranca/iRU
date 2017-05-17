@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers',[])
 
 .controller('bemVindoAAoIRuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -12,6 +12,49 @@ function ($scope, $stateParams) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 //function ($scope,$http, $stateParams)
+
+$scope.validaCPF = function(strCPF)
+{
+var Soma;
+var Resto;
+var cboll = true;
+Soma = 0;
+
+if (strCPF.length != 11 ||
+strCPF == "00000000000" ||
+strCPF == "11111111111" ||
+strCPF == "22222222222" ||
+strCPF == "33333333333" ||
+strCPF == "44444444444" ||
+strCPF == "55555555555" ||
+strCPF == "66666666666" ||
+strCPF == "77777777777" ||
+strCPF == "88888888888" ||
+strCPF == "99999999999")
+cboll = false;
+
+for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+Resto = (Soma * 10) % 11;
+
+if ((Resto == 10) || (Resto == 11)) Resto = 0;
+if (Resto != parseInt(strCPF.substring(9, 10)) ) cboll = false;
+
+Soma = 0;
+for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+Resto = (Soma * 10) % 11;
+
+if ((Resto == 10) || (Resto == 11)) Resto = 0;
+if (Resto != parseInt(strCPF.substring(10, 11) ) ) cboll = false;
+
+if(!cboll){
+//$('#cpf').css('background-color','#FF7171');
+//$('#cpf').focus();
+}else{
+//$('#cpf').css('background-color','#FFF');
+//return rcpf=document.getElementById('cpf').value;
+return cboll;
+}
+}
   $scope.enviacadastro = function ()
   {
     var rusername;
@@ -19,11 +62,7 @@ function ($scope, $stateParams) {
     var remail;
     var rpassword;
     var rpassword2;
-    //var numeros,digitos,soma,i,resultado,digitos_iguais;
-    //digitos_iguais = 1;
-    //var soma,
-    //var resto,
-    //soma = 0;
+    var rrcpf;
     var rcpf;
     var rage;
     var rcurso;
@@ -132,43 +171,12 @@ function ($scope, $stateParams) {
             return;
           }
         }
-        if (cpf.value.length != 11)
+        rrcpf = $scope.validaCPF("cpf");
+        if(rrcpf == true)
         {
-          alert("CPF inválido");
-          return;
-        }
-
-        /*for (i = 0; i < cpf.length - 1; i++)
-          if (cpf.charAt(i) != cpf.charAt(i + 1))
-                  {
-                  digitos_iguais = 0;
-                  return;
-                  }
-                if (!digitos_iguais)
-                {
-                  numeros = cpf.substring(0,9);
-                  digitos = cpf.substring(9);
-                  soma = 0;
-                  for (i = 10; i > 1; i--)
-                  soma += numeros.charAt(10 - i) * i;
-                  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-                  if (resultado != digitos.charAt(0))
-                  alert ("3");
-                  return;
-                  numeros = cpf.substring(0,10);
-            soma = 0;
-              for (i = 11; i > 1; i--)
-                soma += numeros.charAt(11 - i) * i;
-                resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-                if (resultado != digitos.charAt(1))
-                alert ("2");
-                return;
           rcpf = document.getElementById("cpf").value;
-          }
-    else
-        alert ("1");
-        return*/
-        //rcpf = document.getElementById("cpf").value;
+        }
+        else alert('Error');
         rage = document.getElementById("age").value;
         rgender = document.getElementById("gender").value;
         rcurso = document.getElementById("curso").value;
@@ -192,7 +200,7 @@ function ($scope, $stateParams) {
         {
           alert('Error')
         }
-    }
+    };
 }])
 
 .controller('loginCtrl', ['$scope','$http','$stateParams','$state',function ($scope,$http,$stateParams,$state){ // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -301,4 +309,10 @@ function ($scope, $stateParams, $http) {
       alert('Deu error 2');
     });
   }
+}])
+
+.controller('capacityCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $http) {
 }])

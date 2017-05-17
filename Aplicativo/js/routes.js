@@ -36,7 +36,7 @@ angular.module('app.routes', [])
 
     .state('menu', {
     url: '/page4',
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'templates/mmenu.php',
     controller: 'menuCtrl'
   })
 
@@ -45,6 +45,12 @@ angular.module('app.routes', [])
     templateUrl: 'templates/menuadm.html',
     controller: 'menuadmCtrl'
   })
+
+  .state('capacidade', {
+    url: '/page6',
+    templateUrl: 'templates/capacity.html',
+    controller: 'capacityCtrl',
+    })
 
 $urlRouterProvider.otherwise('/page1')
 

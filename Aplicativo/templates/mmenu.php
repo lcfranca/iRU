@@ -9,6 +9,6 @@
 	<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 <!--- ................................... -->
     <button id="menu-button9" class="button button-positive  button-block" ng-click='extrato()' >Checagem de extrato</button>
-    <button id="menu-button14" class="button button-positive  button-block">Rumor UnB - Cardápio da semana</button>
+    <b ui-sref="capacidade" id="signup-button15" class="button button-stable button-block">Verificar Lotação</b>
   </ion-content>
 </ion-view>
